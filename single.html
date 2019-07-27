@@ -79,22 +79,28 @@
             <p>4. Langkah selanjutnya adalah melakukan pull httpd dari dockerhub: >>> docker pull httpd . Jika sudah selesai pull maka akan terlihat images ada di lokal kita. >>> docker image tag httpd:latest giri021-httpd (untuk melakukan tagging image dilokal)</p>
                 <img src="https://miro.medium.com/max/700/1*SfQRWkFLRIOYV_dwVcc1aw.png" alt="" class="img-fluid">
 
+            
             <p>5. Langkah berikutnya adalah git clone repository di github https://github.com/giri021/portfolioku.git . Repository ini isinya adalah web sederhana tanpa database. >> git clone https://github.com/giri021/portfolioku.git </p>
             <p> Maka akan ada folder baru dengan nama portfolioku. Silakan cd ke portfolioku. </p>
                 <img src="https://miro.medium.com/max/604/1*y_cdkv1lT_LyIqDRxrRxsQ.png" alt="" class="img-fluid">
             
+            
             <p>6. Sekarang kita inspect image httpd dan kita peroleh working direktori nya. ubuntu@ip-10–21–4–xx:~$ docker image inspect giri021-httpd
             Akan kita temukan “WorkingDir”: “/usr/local/apache2”, ini nanti akan kita mount dengan isi dari folder /home/ubuntu/portfolioku. Isi dari /home/ubuntu/portfolioku akan identik dengan /usr/local/apache2/htdocs </p>
             <p>File index.html ada di /usr/local/apache2/htdocs <<<< </p>
+            
             <p>7. Langkah selanjutnya adalah menjalankan image giri021-httpd didalam container. </p>p>
             <p>ubuntu@ip-10–21–4–xx:~/portfolioku$ docker run -it -d — name giri-testing -v $PWD:/usr/local/apache2/htdocs -p 0:80 giri021-httpd </p>
                 <img src="https://miro.medium.com/max/700/1*U5KNo3w8JQf1Ti4DqsVddQ.png" alt="" class="img-fluid">
 
             <p>*Catatan: -p 0:80 dapat dipahami seperti ini, -p (publish) adalah untuk menentukan port berapa yang akan digunakan/dibuka. Dengan menggunakan angka 0 adalah maka port host yang digunakan akan random. Semua traffic ke random host akan diarahkan ke port 80 di container giri021-httpd. </p>
+            
             <p>8. Untuk memastikan bahwa isi dari /usr/local/apache2/htdocs == /home/ubuntu/portfolioku . Mari kita cek:</p>
                 <img src="https://miro.medium.com/max/700/1*Y_1PZ-Wb8CAYxhZ_MjCKvQ.png" alt="" class="img-fluid">
                 <img src="https://miro.medium.com/max/700/1*ANYwqFNIm0nXte-XBEPsyw.png" alt="" class="img-fluid">
+            
             <p> 9. Untuk melihat hasil dari deploy web dengan basis image tadi yang kita jalankan didalam container. http://54.70.17.154:32771/</p>
+            
             <p> 10. Akan semakin ciamik jika kita menggunakan layanan AWS yaitu route53 untuk menggunakan domain yang kita punya. Aplikasi berbasis web ini hanya bersifat sementara. Karena habis ini aku delete container yang berjalan. Uji testing saja.</p>
 
             <div class="tag-widget post-tag-container mb-5 mt-5">
