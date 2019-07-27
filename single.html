@@ -104,6 +104,36 @@
             
             <p> 10. Akan semakin ciamik jika kita menggunakan layanan AWS yaitu route53 untuk menggunakan domain yang kita punya. Aplikasi berbasis web ini hanya bersifat sementara. Karena habis ini aku delete container yang berjalan. Uji testing saja.</p>
 
+            
+
+            <h2 class="mb-3">Cara Custom Images di Docker</h2>
+            
+            <p>Hai semua..apa kabar? Hari ini aku nulis lagi. Ini masih ada kaitannya dengan artikel sebelumnya. Silakan dicek disini: https://medium.com/@ag.giri.hartono/deploy-web-sederhana-menggunakan-docker-dengan-opsi-v-volume-e8766ee91d03 </p>
+            <p>Kalau versi sebelumnya kita menggunakan opsi volume untuk melakukan perubahan konten dari isi web berbasis httpd. Sekaligus redundan konten web. Maka kali ini kita akan melakukan custom di image nya. </p>
+            <p>Jadi image httpd yang ini akan berisi juga konten web yang ada di github: https://github.com/giri021/portfolioku.git</p>>
+              <img src="https://miro.medium.com/max/472/1*1-4d80cQVeAnN2TWT_EtXw.png" alt="" class="img-fluid">
+            
+            <p>1. Langkah pertama adalah memastikan ada Dockerfile di direktori portfolioku </p>
+            <p>2. Kita bekerja dalam direktori portfolioku. Disitu ada source code web apps dan Dockerfile</p>
+
+              <img src="https://miro.medium.com/max/528/1*XpDiG-r53-LB_LG6n2_JOg.png" alt="" class="img-fluid">
+            
+            <p>3. Isi dari Dockerfile simple saja sih, ada FROM yang isinya image official dari httpd:2.4 | versi nya pakai 2.4 . Kemudian COPY isi dari folder portfolioku ke /usr/local/apache2/htdocs/</p>
+              <img src="https://miro.medium.com/max/636/1*2VkhNzyjpn-ctGVp4klqcg.png" alt="" class="img-fluid">
+            
+            <p>4. Proses build image sukses dengan nama image baru httpd-custom yang isinya . || Apa itu titik, titik disini adalah isi file dalam working direktori </p>
+            <p>5. Langkah selanjutnya adalah menjalankan container berbasis image custom httpd-custom tadi</p>
+              <img src="https://miro.medium.com/max/700/1*3t4GwPlxtzC5MMU-zAeP7g.png" alt="" class="img-fluid">
+
+            <p>6. Untuk menjalankan image didalam container, kita bisa dengan perintah: </p>
+            <p> ubuntu@ip-10–21–4–52:~/portfolioku$ docker run -it -d — name http-custom -p 0:80 httpd-custom </p>
+            <p> Dimana tag nama adalah http-custom dengan images httpd-custom dipublish lewat port 80 dimana semua traffic menuju host 0 (random port) akan diarahkan ke port 80 container httpd </p>
+            <p>7. Perhatikan pula port host yang diperoleh yaitu http://54.70.17.154:32773/ >> 32773 cukup random bukan?</p>
+            <p>8. Hasil dari deploy web berbasis image custom dapat anda lihat disini:</p>
+
+              <img src="https://miro.medium.com/max/700/1*FNG9aqdqFHCTgyGg1LuH7A.png" alt="" class="img-fluid">
+    
+
             <div class="tag-widget post-tag-container mb-5 mt-5">
               <div class="tagcloud">
                 <a href="#" class="tag-cloud-link">Docker</a>
@@ -209,12 +239,13 @@
         <div class="row mb-5">
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">About Agustinus Giri hartono</h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <h2 class="ftco-heading-2">About</h2>               
+              <P> Agustinus Giri Hartono</P>
+              <p> Honest, Hard Worker, Smart, and Deep Thinking. Good analytical thinking and innovative. Highly motivated and responsible. Extra Ordinary. God's gift. #remoteworker. in Progress as DevOps Engineer & SysOps Amazon Web Service. I have fiber optic connection for remote worker. responsibility and discipline. Ad Maiorem Dei Gloriam.</p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                <li class="ftco-animate"><a href="https://twitter.com/Giri021"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="https://www.facebook.com/ag.giri.hartono"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="https://www.instagram.com/giri021"><span class="icon-instagram"></span></a></li>
               </ul>
             </div>
           </div>
@@ -230,18 +261,7 @@
               </ul>
             </div>
           </div>
-          <div class="col-md">
-             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Services</h2>
-              <ul class="list-unstyled">
-                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Web Design</a></li>
-                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Web Development</a></li>
-                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Business Strategy</a></li>
-                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Data Analysis</a></li>
-                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Graphic Design</a></li>
-              </ul>
-            </div>
-          </div>
+          
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
             	<h2 class="ftco-heading-2">Have a Questions?</h2>
