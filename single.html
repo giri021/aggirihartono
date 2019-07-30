@@ -137,7 +137,24 @@
             <p>8. Hasil dari deploy web berbasis image custom dapat anda lihat disini:</p>
 
             <p><img src="https://miro.medium.com/max/700/1*FNG9aqdqFHCTgyGg1LuH7A.png" alt="" class="img-fluid"> </p>
-    
+
+            <h2 class="mb-3 mt-5">#3. Simple Step for Tag and Push Images </h2>
+            
+            <p>I tried few steps and was able to get around to push it finally. Hope this helps someone. Here are the steps worked for me : </p>
+            <p>1) Login to the docker. Please fill password with your password in dockerhub: </p>
+            <p>docker login -u giri021</p>
+            <p>2) Tag your image build before push </p>
+            <p>your image name here is : yourlocalimage and by default it has tag : latest and my username is : giri021 as registered with docker cloud, and I created a public repository named : dockerhub </p>
+            <p>so my personal repository becomes now : giri021/dockerhub and I want to push my image with tag : myfirstimagepush </p>
+            <p>I tagged as below : </p>
+            <p>docker tag yourlocalimage:latest giri021/dockerhub:myfirstimagepush </p>
+            <p>3) Pushed the image to yourpersonal docker repository as below </p>
+            <p>docker push giri021/dockerhub:myfirstimagepush</p>
+            <p>Just wait for few second & it successfully pushed to your personal docker repo.</p>
+
+            <div class="d-flex align-items-center mt-4 meta">
+                  <p class="mb-0"><a href="https://medium.com/@ag.giri.hartono/simple-step-for-tag-and-push-images-1bdf2cca5832" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+            </div> 
 
             <div class="tag-widget post-tag-container mb-5 mt-5">
               <div class="tagcloud">
