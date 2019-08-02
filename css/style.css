@@ -8669,8 +8669,8 @@ h1, h2, h3, h4, h5,
     color: #000000 !important; }
     .btn.btn-white:hover {
       border: 1px solid #000000;
-      background: #fff !important;
-      color: #fff; }
+      background: #28a745 !important;
+      color: #000; }
     .btn.btn-white.btn-outline-primary {
       border: 1px solid #31de79;
       background: transparent;
